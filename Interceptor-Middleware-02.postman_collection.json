@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "3fd3caea-6230-4bff-bda5-b6c233cd19fb",
+		"name": "Interceptor-Middleware-02",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26043911",
+		"_collection_link": "https://java-team-222.postman.co/workspace/PrimaProva~3b9dee89-b772-45b1-a248-a599dc586a41/collection/26043911-3fd3caea-6230-4bff-bda5-b6c233cd19fb?action=share&creator=26043911&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Get_Header",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "monthNumber",
+						"value": "9",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{myHost}}/months/month",
+					"host": [
+						"{{myHost}}"
+					],
+					"path": [
+						"months",
+						"month"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Absent_Header",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "monthNumber",
+								"value": "0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{myHost}}/months/month",
+							"host": [
+								"{{myHost}}"
+							],
+							"path": [
+								"months",
+								"month"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 01 May 2023 18:35:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Empty_Header",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "monthNumber",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{myHost}}/months/month",
+							"host": [
+								"{{myHost}}"
+							],
+							"path": [
+								"months",
+								"month"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/html;charset=utf-8"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3888"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 01 May 2023 18:37:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 400 – Bad Request</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 400 – Bad Request</h1><hr class=\"line\" /><p><b>Type</b> Exception Report</p><p><b>Message</b> monthNumber header is missing or empty</p><p><b>Description</b> The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</p><p><b>Exception</b></p><pre>jakarta.servlet.ServletException: Request processing failed: java.lang.NumberFormatException: For input string: &quot;&quot;\r\n\torg.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1019)\r\n\torg.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)\r\n\tjakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)\r\n\torg.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\r\n\tjakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)\r\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\r\n\torg.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\r\n\torg.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\torg.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\r\n\torg.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\torg.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\r\n\torg.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n</pre><p><b>Root Cause</b></p><pre>java.lang.NumberFormatException: For input string: &quot;&quot;\r\n\tjava.base&#47;java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)\r\n\tjava.base&#47;java.lang.Integer.parseInt(Integer.java:675)\r\n\tjava.base&#47;java.lang.Integer.parseInt(Integer.java:781)\r\n\tcom.example.interceptormiddleware02.interceptors.MonthInterceptor.preHandle(MonthInterceptor.java:38)\r\n\torg.springframework.web.servlet.HandlerExecutionChain.applyPreHandle(HandlerExecutionChain.java:146)\r\n\torg.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1076)\r\n\torg.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:974)\r\n\torg.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1011)\r\n\torg.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)\r\n\tjakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)\r\n\torg.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)\r\n\tjakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)\r\n\torg.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)\r\n\torg.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\r\n\torg.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\torg.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\r\n\torg.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n\torg.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\r\n\torg.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)\r\n</pre><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p><hr class=\"line\" /><h3>Apache Tomcat/10.1.8</h3></body></html>"
+				},
+				{
+					"name": "Present_Header",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "monthNumber",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{myHost}}/months/month",
+							"host": [
+								"{{myHost}}"
+							],
+							"path": [
+								"months",
+								"month"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "90"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 01 May 2023 18:39:32 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Month{monthNumber=2, englishName='February', italianName='Febbraio', germanName='Februar'}"
+				},
+				{
+					"name": "NotPresent_Header",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "monthNumber",
+								"value": "9",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{myHost}}/months/month",
+							"host": [
+								"{{myHost}}"
+							],
+							"path": [
+								"months",
+								"month"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "79"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 01 May 2023 18:40:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Month{monthNumber=0, englishName='nope', italianName='nope', germanName='nope'}"
+				}
+			]
+		}
+	]
+}
